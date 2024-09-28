@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login JobNest</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/font-awesome.min.css}"/>
+    <meta charset="ISO-8859-1">
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .background {
+            background-image: linear-gradient(to bottom, #000428, #004e92);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .main_div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        .logo_left {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .logo_com {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border-radius: 0.45rem;
+            background-color: #1E90FF;
+            color: white;
+        }
+
+        .logo_right .btn {
+            color: white;
+            margin-left: 10px;
+            background-color: transparent;
+            border: 1px solid white;
+        }
+
+        .logo_right .btn:hover {
+            background-color: #1E90FF;
+            border-color: #1E90FF;
+        }
+
+        .searchBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .inner {
+            display: flex;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .inner input {
+            flex: 1;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            outline: none;
+            background-color: #f1f1f1;
+        }
+
+        .inner button {
+            background-color: #1E90FF;
+            border: none;
+            color: white;
+            padding: 0 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="background">
+<nav class="main_div">
+    <div class="logo_left">
+        <label class="logo">JobNest</label>
+        <label class="logo_com">.com</label>
+    </div>
+    <div class="logo_right">
+        <a th:href="@{/login}" class="btn btn-danger">Job Candidate Login / Register</a>
+        <a th:href="@{/login}" class="btn btn-primary">Recruiter Login / Register</a>
+    </div>
+</nav>
+<form th:action="@{/global-search/}" class="searchBox">
+    <div class="inner">
+        <input type="text" placeholder="Search for a job" name="job" th:value="${job}"/>
+        <input type="text" placeholder="Enter a location" name="location" th:value="${location}"/>
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+</form>
+<footer>
+    <label class="copy-right">Copyright © JobNest.com</label>
+</footer>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

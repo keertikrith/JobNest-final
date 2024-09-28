@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/font-awesome.min.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <meta charset="ISO-8859-1"/>
+    <title>Sign Up</title>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .hidden-overflow {
+            overflow: hidden;
+        }
+
+        .coffee_mug_background {
+            background: linear-gradient(to bottom right, #283E4A, #506580);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            color: #fff;
+        }
+
+        .logo_com {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border-radius: 0.45rem;
+            background-color: #fb4f14;
+            color: white;
+        }
+
+        .top-margin {
+            padding: 3rem;
+        }
+
+        .heading_font {
+            font-size: 2.2rem;
+            color: #333;
+        }
+
+        .myForm {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 5px;
+            box-shadow: none;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            border-color: #fb4f14;
+            box-shadow: 0 0 0 0.2rem rgba(251, 79, 20, 0.25);
+        }
+
+        .myBtn {
+            background-color: #fb4f14;
+            color: white;
+            border: none;
+            width: 100%;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .myBtn:hover {
+            background-color: #e14a00;
+        }
+    </style>
+</head>
+
+<body>
+<section class="content hidden-overflow">
+    <div class="row no-gutters">
+        <div class="col-md-6 coffee_mug_background">
+            <div class="logo_left mt-3 pt-4 ms-5 pl-5">
+                <h2 class="logo">
+                    JobNest <span class="logo_com">.com</span>
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="container top-margin">
+                <div class="d-flex justify-content-center mb-4">
+                    <h1 class="heading_font font-weight-bold">
+                        Create User Account
+                    </h1>
+                </div>
+                <div class="myForm">
+                    <form th:action="@{/register/new}" th:object="${user}" method="post">
+                        <div class="form-group mb-3">
+                            <input placeholder="Email" name="email" th:field="*{email}" type="email" class="form-control" required/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input min="8" placeholder="Password" name="password" th:field="*{password}" type="password" class="form-control" required/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <select required class="form-control" th:field="*{userTypeId}">
+                                <th:block th:each="userType :${getAllTypes}">
+                                    <option th:text="${userType.userTypeName}" th:value="${userType.userTypeId}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group mt-5">
+                            <button type="submit" class="myBtn py-3">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+
+  <style>
+    /* Basic reset and layout */
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+    .row {
+        margin: 0;
+    }
+    .col-md-6 {
+        padding: 0;
+    }
+    .coffee_mug_background {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .logo_com {
+        color: #FFC107; /* Yellow color */
+    }
+    .myForm {
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .myForm h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    .form-check-label {
+        font-size: 0.875rem;
+    }
+    .btn-primary {
+        background-color: #007bff; /* Blue color */
+        border: none;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        color: white;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+    .color-text {
+        color: #007bff; /* Blue color */
+    }
+    .text-center {
+        text-align: center;
+    }
+    .text-decoration-none {
+        text-decoration: none;
+    }
+    .mt-3 {
+        margin-top: 1rem;
+    }
+    .mb-3 {
+        margin-bottom: 1rem;
+    }
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .float-left {
+        float: left;
+    }
+    .float-right {
+        float: right;
+    }
+    .w-100 {
+        width: 100%;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .vh-100 {
+        height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+<div class="row m-0 vh-100">
+  <!-- Left Side with Branding -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center coffee_mug_background">
+    <div class="text-center">
+      <h2 class="logo">JobNest <span class="logo_com">.com</span></h2>
+    </div>
+  </div>
+
+  <!-- Right Side with Login Form -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center">
+    <div class="myForm">
+      <form th:action="@{/login}" th:object="${user}" method="post">
+        <h1 class="text-center bold font-weight-bold mb-4">Login</h1>
+
+        <!-- Email Input -->
+        <div class="form-group mb-3">
+          <input
+                  placeholder="Email"
+                  name="username"
+                  field="{email}"
+                  type="email"
+                  class="form-control"
+                  required
+          />
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group mb-3">
+          <input
+                  placeholder="Password"
+                  name="password"
+                  field="{password}"
+                  type="password"
+                  class="form-control"
+                  required
+          />
+        </div>
+
+        <!-- Remember Me and Forgot Password -->
+        <div class="clearfix mb-4">
+          <div class="form-check float-left">
+            <input type="checkbox" class="form-check-input" id="rememberMe"/>
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <a href="#" class="text-decoration-none color-text float-right">Forgot Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary w-100">Log in</button>
+        </div>
+
+        <!-- Register Link -->
+        <p class="text-center mt-3">
+          Are you a new User?
+          <a class="text-decoration-none color-text" th:href="@{/register}">Register Now</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+</body>
+</html>
